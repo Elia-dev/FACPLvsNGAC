@@ -1,0 +1,10 @@
+
+policy_class(patientConsent)
+user_attribute(Doctor)
+user_attribute(Pharmacist)
+object_attribute(ePrescription)
+operation(read)
+operation(write)
+
+associate(Doctor, {read,write}, ePrescription)
+associate(Pharmacist, {read}, ePrescription)

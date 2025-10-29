@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/home/elia/Scrivania/Universita/Magistrale/Burocrazia/BorsaRicerca/eclipse-workspace/xacmlTofacpl_library-2.0.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/elia/Scrivania/Universita/Magistrale/Burocrazia/BorsaRicerca/eclipse-workspace/FACPL_plugin_20180711.zip">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/elia/Scrivania/Universita/Magistrale/Burocrazia/BorsaRicerca/eclipse-workspace/2.0.5/features/it.unifi.xtext.facpl2.sdk_1.0.0.201807111101.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/elia/Scrivania/Universita/Magistrale/Burocrazia/BorsaRicerca/eclipse-workspace/2.0.5/plugins/FACPL_Dependecies_1.0.0.201807111101.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/elia/Scrivania/Universita/Magistrale/Burocrazia/BorsaRicerca/eclipse-workspace/2.0.5/plugins/FACPL_Library_1.0.0.201807111101.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/elia/Scrivania/Universita/Magistrale/Burocrazia/BorsaRicerca/eclipse-workspace/2.0.5/plugins/it.unifi.xtext.facpl2.ui_1.0.0.201807111101.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/elia/Scrivania/Universita/Magistrale/Burocrazia/BorsaRicerca/eclipse-workspace/2.0.5/plugins/it.unifi.xtext.facpl2_1.0.0.201807111101.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/elia/Scrivania/Universita/Magistrale/Burocrazia/BorsaRicerca/eclipse-workspace/2.0.5/plugins/XacmlToFacpl_1.0.0.201807111101.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/FACPL"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
