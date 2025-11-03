@@ -8,6 +8,15 @@
   <groupId>it.unifi.facpl</groupId>
   <artifactId>facpl-ngac-compare</artifactId>
   <version>1.0-SNAPSHOT</version>
+  
+  <!-- jitpack repository for NGAC -->
+  <repositories>
+  	<repository>
+  		<id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	    </repository>
+	</repositories>
+  
   <dependencies>
 
     <!-- FACPL Engine -->
@@ -19,9 +28,9 @@
 
     <!-- NGAC Reference Implementation -->
     <dependency>
-      <groupId>gov.nist.csd.pm</groupId>
-      <artifactId>policy-machine-core</artifactId>
-  		<version>3.1.0</version>
+	  <groupId>com.github.usnistgov</groupId>
+	  <artifactId>policy-machine-core</artifactId>
+	  <version>3.1.2</version>
 	</dependency>
 
     <!-- JSON utility -->
