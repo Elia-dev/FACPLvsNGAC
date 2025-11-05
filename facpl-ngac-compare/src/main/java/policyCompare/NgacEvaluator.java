@@ -11,10 +11,13 @@ import gov.nist.csd.pm.core.pap.query.model.context.TargetContext;
 import gov.nist.csd.pm.core.pap.query.model.context.UserContext;
 import gov.nist.csd.pm.core.pdp.PDP;
 import java.util.List;
+import java.io.IOException;
+import java.nio.file.Path;
 
 
 public class NgacEvaluator {
     
+	/**
 	public static void main(String[] args) throws PMException {
 	    // create a new memory PAP
 	    PAP pap = new MemoryPAP();
@@ -94,7 +97,7 @@ public class NgacEvaluator {
 
 	    pap.executePML(new UserContext("u1")), pml);
 	    */
-
+	/**
 	    AccessRightSet privileges = pap.query().access().computePrivileges(new UserContext(u1), new TargetContext(o1));
 	    System.out.println(privileges);
 	    // expected output: {associate, read, create_object_attribute, associate_to}
@@ -114,5 +117,36 @@ public class NgacEvaluator {
 
 	    System.out.println(pap.query().graph().getAssociationsWithSource(ua1));
 	    // expected output: {ua1->oa1{associate, read, create_object_attribute, write, associate_to}, ua1->oa2{read, write}}
-	  }
+	    
+	    System.out.println("u1 READ o1: " + (isAllowed(pap, u1, o1, "read") ? "allow" : "deny"));
+	    System.out.println("u1 WRITE o1: " + (isAllowed(pap, u1, o1, "write") ? "allow" : "deny"));
+
+	} */
+	
+	public static void main(String[] args) throws PMException, IOException {
+	    PAP pap = new MemoryPAP();
+
+	    // Load policy from .graph file
+	    GraphPolicyLoader loader = new GraphPolicyLoader(pap);
+	    loader.loadFromFile(Path.of("src/main/resources/ngac/patientConsent.graph"));
+	    
+	    System.out.println("Policy loaded successfully");
+	    System.out.println("Operations: " + pap.query().operations().getResourceOperations());
+	    long doctorID = loader.getNodeId("Doctor");
+	    long pharmacistID = loader.getNodeId("Pharmacist");
+	    long ePrescriptionID = loader.getNodeId("ePrescription");
+	    System.out.println("doctor READ prescription: " + (isAllowed(pap, doctorID, ePrescriptionID, "read") ? "allow" : "deny"));
+	    System.out.println("doctor WRITE prescription: " + (isAllowed(pap, doctorID, ePrescriptionID, "write") ? "allow" : "deny"));
+	    
+	    System.out.println("pharmacist READ prescription: " + (isAllowed(pap, pharmacistID, ePrescriptionID, "read") ? "allow" : "deny"));
+	    System.out.println("pharmacist WRITE prescription: " + (isAllowed(pap, pharmacistID, ePrescriptionID, "write") ? "allow" : "deny"));
+	}
+	
+	private static boolean isAllowed(PAP pap, long userId, long targetId, String right) throws PMException {
+	    AccessRightSet privs = pap.query().access().computePrivileges(
+	            new UserContext(userId),
+	            new TargetContext(targetId)
+	    );
+	    return privs.contains(right);
+	}
 }
