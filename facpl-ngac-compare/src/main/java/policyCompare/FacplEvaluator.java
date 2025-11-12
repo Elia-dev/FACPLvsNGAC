@@ -36,7 +36,7 @@ public class FacplEvaluator {
      * @param additionalAttributes Additional attributes as key-value pairs
      * @return true if access is permitted, false otherwise
      */
-    public boolean isAllowed(String subjectId, String resourceId, String actionId, 
+    public ExtendedDecision isAllowed(String subjectId, String resourceId, String actionId, 
                             HashMap<String, Object> additionalAttributes) {
         // Create request
         Request req = new Request("AccessRequest");
@@ -83,10 +83,11 @@ public class FacplEvaluator {
         AuthorisationPDP resPDP = pdp.doAuthorisation(contextReq);
         
         // Check decision
-        return resPDP.getDecision() == ExtendedDecision.PERMIT;
+        //return resPDP.getDecision() == ExtendedDecision.PERMIT;
+        return resPDP.getDecision();
     }
     
-    public boolean isAllowed(String subjectId, String resourceId, String actionId) {
+    public ExtendedDecision isAllowed(String subjectId, String resourceId, String actionId) {
         return isAllowed(subjectId, resourceId, actionId, null);
     }
     
@@ -108,7 +109,7 @@ public class FacplEvaluator {
         pharmacistAttrs.put("resource/type", "e-Dispensation");
         pharmacistAttrs.put("resource/patient-id", "Bob");
         
-        
+        /*
         System.out.println("doctor READ prescription: " + 
         		(evaluator.isAllowed("Doctor", "ePrescription", "read", doctorAttrs) ? "allow" : "deny"));
         System.out.println("doctor WRITE prescription: " + 
@@ -117,7 +118,16 @@ public class FacplEvaluator {
         System.out.println("pharmacist READ prescription: " + 
         		(evaluator.isAllowed("Pharmacist", "ePrescription", "read", pharmacistAttrs) ? "allow" : "deny"));
         System.out.println("pharmacist WRITE prescription: " + 
-        		(evaluator.isAllowed("Pharmacist", "ePrescription", "write", pharmacistAttrs) ? "allow" : "deny"));
+        		(evaluator.isAllowed("Pharmacist", "ePrescription", "write", pharmacistAttrs) ? "allow" : "deny"));*/
+        System.out.println("doctor READ prescription: " + 
+        		(evaluator.isAllowed("Doctor", "ePrescription", "read", doctorAttrs).toString()));
+        System.out.println("doctor WRITE prescription: " + 
+        		(evaluator.isAllowed("Doctor", "ePrescription", "write", doctorAttrs).toString()));
+        
+        System.out.println("pharmacist READ prescription: " + 
+        		(evaluator.isAllowed("Pharmacist", "ePrescription", "read", pharmacistAttrs).toString()));
+        System.out.println("pharmacist WRITE prescription: " + 
+        		(evaluator.isAllowed("Pharmacist", "ePrescription", "write", pharmacistAttrs).toString()));
     }
     
     public PDP getPdp() {

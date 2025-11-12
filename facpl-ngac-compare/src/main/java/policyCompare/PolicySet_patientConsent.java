@@ -3,16 +3,18 @@ package policyCompare;
 import it.unifi.facpl.lib.policy.*;
 import it.unifi.facpl.lib.enums.*;
 import it.unifi.facpl.lib.util.*;
+import it.unifi.facpl.lib.function.comparison.*;
+import it.unifi.facpl.lib.algorithm.*;
 
 @SuppressWarnings("all")
 public class PolicySet_patientConsent extends PolicySet {
     public PolicySet_patientConsent() {
         addId("patientConsent");
         // Algorithm Combining
-        addCombiningAlg(new it.unifi.facpl.lib.algorithm.PermitOverridesGreedy());
+        addCombiningAlg(new PermitOverridesGreedy());
         // Target
         addTarget(new ExpressionFunction(
-            new it.unifi.facpl.lib.function.comparison.Equal(), 
+            new Equal(), 
             "Alice",
             new AttributeName("resource", "patient-id")
         ));
@@ -25,10 +27,10 @@ public class PolicySet_patientConsent extends PolicySet {
         PolicySet_ePre() {
             addId("ePre");
             // Algorithm Combining
-            addCombiningAlg(new it.unifi.facpl.lib.algorithm.PermitOverridesGreedy());
+            addCombiningAlg(new PermitOverridesGreedy());
             // Target
             addTarget(new ExpressionFunction(
-                new it.unifi.facpl.lib.function.comparison.Equal(), 
+                new Equal(), 
                 "e-Prescription",
                 new AttributeName("resource", "type")
             ));
@@ -49,14 +51,14 @@ public class PolicySet_patientConsent extends PolicySet {
                 ExprBooleanConnector.AND,
                 new ExpressionBooleanTree(
                     new ExpressionFunction(
-                        new it.unifi.facpl.lib.function.comparison.Equal(),
+                        new Equal(),
                         new AttributeName("subject", "role"), 
                         "doctor"
                     )
                 ),
                 new ExpressionBooleanTree(
                     new ExpressionFunction(
-                        new it.unifi.facpl.lib.function.comparison.Equal(),
+                        new Equal(),
                         new AttributeName("action", "id"), 
                         "read"
                     )
@@ -76,14 +78,14 @@ public class PolicySet_patientConsent extends PolicySet {
                 ExprBooleanConnector.AND,
                 new ExpressionBooleanTree(
                     new ExpressionFunction(
-                        new it.unifi.facpl.lib.function.comparison.Equal(),
+                        new Equal(),
                         new AttributeName("subject", "role"), 
                         "doctor"
                     )
                 ),
                 new ExpressionBooleanTree(
                     new ExpressionFunction(
-                        new it.unifi.facpl.lib.function.comparison.Equal(),
+                        new Equal(),
                         new AttributeName("action", "id"), 
                         "write"
                     )
@@ -103,14 +105,14 @@ public class PolicySet_patientConsent extends PolicySet {
                 ExprBooleanConnector.AND,
                 new ExpressionBooleanTree(
                     new ExpressionFunction(
-                        new it.unifi.facpl.lib.function.comparison.Equal(),
+                        new Equal(),
                         new AttributeName("subject", "role"), 
                         "pharmacist"
                     )
                 ),
                 new ExpressionBooleanTree(
                     new ExpressionFunction(
-                        new it.unifi.facpl.lib.function.comparison.Equal(),
+                        new Equal(),
                         new AttributeName("action", "id"), 
                         "read"
                     )
