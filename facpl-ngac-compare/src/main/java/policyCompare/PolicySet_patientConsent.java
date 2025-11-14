@@ -20,7 +20,11 @@ public class PolicySet_patientConsent extends PolicySet {
         ));
         // PolElements
         addPolicyElement(new PolicySet_ePre());
-        // Obligation - none specified in your .fpl
+        addPolicyElement(new PolicySet_denyAll());
+        
+     // Obligations
+        addObligation(new Obligation("compress",Effect.PERMIT,ObligationType.O,null));
+        addObligation(new Obligation("mailTo",Effect.DENY,ObligationType.M,new AttributeName("resource","patient-id.mail"),"Data requested by unauthorized subject"));
     }
 
     private class PolicySet_ePre extends PolicySet {
@@ -119,6 +123,22 @@ public class PolicySet_patientConsent extends PolicySet {
                 )
             ));
             // Obligations
+        }
+    }
+    
+    private class PolicySet_denyAll extends PolicySet {
+        PolicySet_denyAll() {
+            addId("denyAll");
+            addCombiningAlg(new it.unifi.facpl.lib.algorithm.DenyOverridesGreedy());
+            addPolicyElement(new Rule_deny());
+        }
+
+        private class Rule_deny extends Rule {
+            Rule_deny() {
+                addId("denyRule");
+                addEffect(Effect.DENY);
+                // no target => applies when others are NotApplicable
+            }
         }
     }
 }

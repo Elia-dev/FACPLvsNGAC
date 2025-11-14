@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.LinkedList;
+import it.unifi.facpl.lib.algorithm.*;
 
 public class FacplEvaluator {
     
@@ -22,7 +23,7 @@ public class FacplEvaluator {
         policies.add(policy);
         
         // Initialize PDP with combining algorithm
-        this.pdp = new PDP(new it.unifi.facpl.lib.algorithm.PermitUnlessDenyGreedy(), policies, false);
+        this.pdp = new PDP(new PermitUnlessDenyGreedy(), policies, false);
         
         // Initialize PEP
         this.pep = new PEP(EnforcementAlgorithm.DENY_BIASED);
@@ -137,4 +138,5 @@ public class FacplEvaluator {
     public PEP getPep() {
         return pep;
     }
+    
 }

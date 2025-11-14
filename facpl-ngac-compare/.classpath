@@ -38,6 +38,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/FACPL"/>
-	<classpathentry kind="lib" path="/home/elia/Scrivania/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/home/elia/Scrivania/Universita/Magistrale/Burocrazia/BorsaRicerca/eclipse-workspace/slf4j-api-1.7.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
